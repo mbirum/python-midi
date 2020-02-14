@@ -50,7 +50,7 @@ try:
         clkLast = clk
         dtLast = dt
         posLast = pos
-        sleep(0.001)
+        sleep(0.0001)
 
 finally:
     os.system('midichan reset $channel')
