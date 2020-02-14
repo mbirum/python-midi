@@ -18,7 +18,7 @@ max = 123
 pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
-swLast = GPIO.input(swLast)
+swLast = GPIO.input(swPin)
 posLast = pos
 
 try:
