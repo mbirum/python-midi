@@ -28,15 +28,20 @@ try:
     increment = 0.0001
     while True:
 
-	sw = GPIO.input(swPin)
-	if GPIO.LOW == sw:
-		swPressed = True
-	elif swPressed:
-		swToggle = not swToggle
-		print swToggle
-		swPressed = False
+	    sw = GPIO.input(swPin)
+	    if GPIO.LOW == sw:
+		    #swPressed = True
+            print "LOW"
+        elif GPIO.HIGH == sw:
+            print "HIGH"
+        else:
+            print sw
+	    #elif swPressed:
+	    #	swToggle = not swToggle
+	    #	print swToggle
+	    #	swPressed = False
 
-	clk = GPIO.input(clkPin)
+	    clk = GPIO.input(clkPin)
         dt = GPIO.input(dtPin)
         full = True
 
