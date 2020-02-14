@@ -30,7 +30,7 @@ try:
         full = True
 
         if swLast != sw:
-            print "Pressed!"
+            print sw
 
         #half or full click
         if clk != dt:
@@ -57,7 +57,7 @@ try:
         clkLast = clk
         dtLast = dt
         swLast = sw
-        
+
         posLast = pos
         sleep(0.0001)
 
