@@ -19,8 +19,6 @@ pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
 swLast = GPIO.input(swPin)
-swToggle = False
-swPressed = False
 posLast = pos
 
 try:
@@ -28,19 +26,15 @@ try:
     increment = 0.0001
     counter = 0.0
     while True:
+	
 	c = int(counter * 10000)
 	if 100 == c:
 		counter = 0.0
 		sw = GPIO.input(swPin)
 		if sw != swLast:
-			swLast = sw
 			if sw == GPIO.LOW:
 				print "Pressed!"
 		swLast = sw
-	    #elif swPressed:
-	    #	swToggle = not swToggle
-	    #	print swToggle
-	    #	swPressed = False
 
 	clk = GPIO.input(clkPin)
         dt = GPIO.input(dtPin)
