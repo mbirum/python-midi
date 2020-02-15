@@ -33,7 +33,9 @@ try:
 		sw = GPIO.input(swPin)
 		if sw != swLast:
 			if sw == GPIO.LOW:
-				print "Pressed!"
+				#print "Pressed!"
+				message='9%s 01 7f'%(channel)
+				os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 		swLast = sw
 
 	clk = GPIO.input(clkPin)
