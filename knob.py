@@ -4,16 +4,6 @@ from utils import delay
 import sys
 import os
 
-def ledOff():
-    GPIO.output(21, GPIO.LOW)
-
-@delay(0.009)
-def ledOn():
-    GPIO.output(21, GPIO.HIGH)
-
-def ledBlink():
-    ledOff()
-    ledOn()
 
 clkPin = int(sys.argv[1])
 dtPin = int(sys.argv[2])
@@ -52,7 +42,7 @@ try:
 				#print "Pressed!"
 				message='9%s 01 7f'%(channel)
 				os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
-		                ledBlink()
+
 		swLast = sw
 
 	clk = GPIO.input(clkPin)
@@ -80,7 +70,6 @@ try:
                 message='B%s 01 %s'%(channel,code)
                 #print('B%s 01 %s'%(channel,code))
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
-                ledBlink()
 
         clkLast = clk
         dtLast = dt
