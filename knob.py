@@ -10,6 +10,7 @@ swPin = int(sys.argv[3])
 channel = sys.argv[4]
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 GPIO.setup(21, GPIO.OUT)
 GPIO.setup(clkPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dtPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
