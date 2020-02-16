@@ -77,7 +77,6 @@ try:
         sleep(increment)
 
 finally:
-    GPIO.output(21, GPIO.LOW)
     os.system('midichan reset $channel')
     GPIO.cleanup()
     print "done"
