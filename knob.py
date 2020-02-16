@@ -1,5 +1,6 @@
 from RPi import GPIO
 from time import sleep
+from utils import delay
 import sys
 import os
 
@@ -9,6 +10,7 @@ swPin = int(sys.argv[3])
 channel = sys.argv[4]
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(21, GPIO.OUT)
 GPIO.setup(clkPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dtPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(swPin, GPIO.IN)
@@ -22,6 +24,8 @@ swLast = GPIO.input(swPin)
 posLast = pos
 
 try:
+
+    GPIO.output(21, GPIO.HIGH)
 
     increment = 0.0001
     counter = 0.0
@@ -72,6 +76,7 @@ try:
         sleep(increment)
 
 finally:
+    GPIO.output(21, GPIO.LOW)
     os.system('midichan reset $channel')
     GPIO.cleanup()
     print "done"
