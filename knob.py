@@ -17,8 +17,8 @@ GPIO.setup(clkPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dtPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(swPin, GPIO.IN)
 
-min = 3
-max = 123
+min = 1
+max = 127
 pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
