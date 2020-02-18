@@ -19,7 +19,7 @@ GPIO.setup(swPin, GPIO.IN)
 
 min = 0
 max = 127
-knobIncrement = 1
+knobIncrement = 3
 pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
