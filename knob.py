@@ -67,7 +67,10 @@ try:
                     pos = max
 
             if posLast != pos:
-                code=hex(pos).split('x')[1]
+                if pos == 0:
+                    code='00'
+                else:
+                    code=hex(pos).split('x')[1]
                 message='B%s 01 %s'%(channel,code)
                 #print('B%s 01 %s'%(channel,code))
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
