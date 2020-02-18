@@ -1,3 +1,5 @@
+python /devl/midi/update.py
+
 /devl/midi/kill
 /devl/midi/knob-on 17 18 4 1
 /devl/midi/knob-on 22 23 27 3
