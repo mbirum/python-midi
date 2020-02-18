@@ -8,7 +8,8 @@ import os
 clkPin = int(sys.argv[1])
 dtPin = int(sys.argv[2])
 swPin = int(sys.argv[3])
-channel = sys.argv[4]
+knobIncrement = int(sys.argv[4])
+channel = sys.argv[5]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -19,7 +20,6 @@ GPIO.setup(swPin, GPIO.IN)
 
 min = 0
 max = 127
-knobIncrement = 3
 pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
