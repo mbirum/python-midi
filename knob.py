@@ -17,8 +17,9 @@ GPIO.setup(clkPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dtPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(swPin, GPIO.IN)
 
-min = 1
+min = 0
 max = 127
+increment = 6
 pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
@@ -56,12 +57,12 @@ try:
         if full:
             #left click
             if clkLast != clk and dtLast == dt:
-                pos -= 6
+                pos -= increment
                 if pos < min:
                     pos = min
             #right click
             elif dtLast != dt and clkLast == clk:
-                pos += 6
+                pos += increment
                 if pos > max:
                     pos = max
 
