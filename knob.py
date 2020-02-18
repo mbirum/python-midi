@@ -19,7 +19,7 @@ GPIO.setup(swPin, GPIO.IN)
 
 min = 0
 max = 127
-increment = 6
+knobIncrement = 6
 pos = min
 clkLast = GPIO.input(clkPin)
 dtLast = GPIO.input(dtPin)
@@ -57,20 +57,17 @@ try:
         if full:
             #left click
             if clkLast != clk and dtLast == dt:
-                pos -= increment
+                pos -= knobIncrement
                 if pos < min:
                     pos = min
             #right click
             elif dtLast != dt and clkLast == clk:
-                pos += increment
+                pos += knobIncrement
                 if pos > max:
                     pos = max
 
             if posLast != pos:
-                if pos == 0:
-                    code='00'
-                else:
-                    code=hex(pos).split('x')[1]
+                code=hex(pos).split('x')[1]
                 message='B%s 01 %s'%(channel,code)
                 #print('B%s 01 %s'%(channel,code))
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
