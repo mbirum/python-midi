@@ -1,0 +1,5 @@
+echo 21 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio21/direction
+echo 0 > /sys/class/gpio/gpio21/value
+ps -ef | grep knob- | grep -v grep | awk '{print $2}' | xargs kill -9
+for f in /devl/midi/channels/*; do echo 1 > $f; done

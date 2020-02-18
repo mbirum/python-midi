@@ -1,0 +1,4 @@
+./kill
+./knob-on 17 18 4 6
+./knob-on 22 23 27 3
+./knob-on 6 12 5 1

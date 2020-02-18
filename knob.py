@@ -80,6 +80,6 @@ try:
         sleep(increment)
 
 finally:
-    os.system('midichan reset $channel')
+    os.system('/devl/midi/midichan reset $channel')
     GPIO.cleanup()
     print "done"

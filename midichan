@@ -1,0 +1,20 @@
+dir=/devl/midi/channels
+
+arg=$1
+if [ "$arg" = "reset" ]
+then
+  channel=$2
+  echo 1 > $dir/$channel
+  exit 0
+fi
+
+for f in $dir/*; do 
+  chan=${f//$dir\//}
+  bit=$(cat $f)
+  if [ "$bit" = "1" ]
+  then
+    echo 0 > $f
+    echo $chan
+    exit 0
+  fi
+done
