@@ -21,6 +21,7 @@ then
             git clone https://github.com/mbirum/python-midi
             if [ -d "./python/midi" ]
             then
+                echo "/python/midi exists"
                 rm -rf midi
                 cp -r python-midi ./midi
                 rm -rf python-midi
