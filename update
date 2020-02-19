@@ -16,7 +16,16 @@ then
     then
         if [ "$SW_THREE" == "0" ]
         then
-            echo "ALL THREE!"
+            /devl/midi/kill
+            cd /devl
+            git clone https://github.com/mbirum/python-midi
+            if [ -d "./python/midi" ]
+            then
+                rm -rf midi
+                cp -r python-midi ./midi
+                rm -rf python-midi
+                /devl/midi/run
+            fi
         fi
     fi
 fi
