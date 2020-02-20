@@ -15,10 +15,7 @@ try:
     os.system('echo %s > /sys/class/gpio/export'%(swPin3))
 
     while True:
-	
-	c = int(counter * 10000)
-	if 100 == c:
-		os.system('/devl/midi/update %s %s %s'%(swPin1,swPin2,swPin3))
+        os.system('/devl/midi/update %s %s %s'%(swPin1,swPin2,swPin3))
     
     sleep(0.01)
 
