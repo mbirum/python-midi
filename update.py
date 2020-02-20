@@ -7,7 +7,10 @@ swPin1 = int(sys.argv[1])
 swPin2 = int(sys.argv[2])
 swPin3 = int(sys.argv[3])
 
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(swPin1, GPIO.IN)
+GPIO.setup(swPin2, GPIO.IN)
+GPIO.setup(swPin3, GPIO.IN)
 
 try:
 
