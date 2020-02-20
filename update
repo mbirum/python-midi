@@ -1,6 +1,6 @@
-echo $1 > /sys/class/gpio/export
-echo $2 > /sys/class/gpio/export
-echo $3 > /sys/class/gpio/export
+#echo $1 > /sys/class/gpio/export
+#echo $2 > /sys/class/gpio/export
+#echo $3 > /sys/class/gpio/export
 
 SW_ONE=$(cat /sys/class/gpio/gpio$1/value)
 SW_TWO=$(cat /sys/class/gpio/gpio$2/value)
