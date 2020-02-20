@@ -1,31 +1,10 @@
-#echo $1 > /sys/class/gpio/export
-#echo $2 > /sys/class/gpio/export
-#echo $3 > /sys/class/gpio/export
-
-SW_ONE=$(cat /sys/class/gpio/gpio$1/value)
-SW_TWO=$(cat /sys/class/gpio/gpio$2/value)
-SW_THREE=$(cat /sys/class/gpio/gpio$3/value)
-
-echo $1 > /sys/class/gpio/unexport
-echo $2 > /sys/class/gpio/unexport
-echo $3 > /sys/class/gpio/unexport
-
-if [ "$SW_ONE" == "0" ]
+cd /devl
+git clone https://github.com/mbirum/python-midi
+if [ -d "./python-midi" ]
 then
-    if [ "$SW_TWO" == "0" ]
-    then
-        if [ "$SW_THREE" == "0" ]
-        then
-            cd /devl
-            git clone https://github.com/mbirum/python-midi
-            if [ -d "./python-midi" ]
-            then
-                /devl/midi/kill
-                rm -rf midi
-                cp -r python-midi ./midi
-                rm -rf python-midi
-                /devl/midi/run
-            fi
-        fi
-    fi
+    /devl/midi/kill
+    rm -rf midi
+    cp -r python-midi ./midi
+    rm -rf python-midi
+    /devl/midi/run
 fi
