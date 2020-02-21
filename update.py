@@ -20,7 +20,7 @@ try:
         sw3 = GPIO.input(swPin3)
 
         if sw1 == 0 and sw2 == 0 and sw3 == 0:
-            os.system('/devl/midi/update')
+            os.system('/bin/bash -c /devl/midi/update')
     
         sleep(0.01)
 
