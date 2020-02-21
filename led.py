@@ -3,8 +3,8 @@ import sys
 
 def power(switch):
     ledPin = 21
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
+    #GPIO.setmode(GPIO.BCM)
+    #GPIO.setwarnings(False)
     GPIO.setup(ledPin, GPIO.OUT)
     GPIO.output(ledPin, switch)
     GPIO.cleanup()
