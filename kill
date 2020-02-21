@@ -1,5 +1,5 @@
 # led off
-python ./led.py off
+python /devl/midi/led.py off
 
 # kill processes
 ps -ef | grep knob- | grep -v grep | awk '{print $2}' | xargs kill -9
