@@ -1,2 +1,2 @@
 channel=$(/devl/midi/midichan)
-exec -a knob-c$channel-p$1-p$2 python /devl/midi/knob.py $1 $2 $3 $4 $channel &
+exec -a knob-c$channel-p$1-p$2-p$3 python /devl/midi/knob.py $1 $2 $3 $4 $channel &

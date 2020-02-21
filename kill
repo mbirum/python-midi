@@ -1,5 +1,9 @@
-echo 21 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio21/direction
-echo 0 > /sys/class/gpio/gpio21/value
+# led off
+python ./led.py off
+
+# kill processes
 ps -ef | grep knob- | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep update-midi | grep -v grep | awk '{print $2}' | xargs kill -9
+
+# reset midi channels
 for f in /devl/midi/channels/*; do echo 1 > $f; done

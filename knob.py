@@ -1,9 +1,8 @@
 from RPi import GPIO
 from time import sleep
-from utils import delay
 import sys
 import os
-
+import led
 
 clkPin = int(sys.argv[1])
 dtPin = int(sys.argv[2])
@@ -13,7 +12,6 @@ channel = sys.argv[5]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(21, GPIO.OUT)
 GPIO.setup(clkPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(dtPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(swPin, GPIO.IN)
@@ -28,7 +26,7 @@ posLast = pos
 
 try:
 
-    GPIO.output(21, GPIO.HIGH)
+    led.power(GPIO.HIGH)
 
     increment = 0.0001
     counter = 0.0
