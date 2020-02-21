@@ -5,7 +5,6 @@ def power(switch):
     ledPin = 21
     GPIO.setup(ledPin, GPIO.OUT)
     GPIO.output(ledPin, switch)
-    GPIO.cleanup()
 
 
 if __name__ == '__main__':
@@ -16,4 +15,5 @@ if __name__ == '__main__':
         power(GPIO.HIGH)
     if "off" == arg:
         power(GPIO.LOW)
+    GPIO.cleanup()
 
