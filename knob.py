@@ -44,7 +44,7 @@ try:
 
 		swLast = sw
 
-	    clk = GPIO.input(clkPin)
+	clk = GPIO.input(clkPin)
         dt = GPIO.input(dtPin)
         full = True
 
