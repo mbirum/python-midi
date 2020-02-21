@@ -14,5 +14,6 @@ then
     rm -rf python-midi
 
     # re-run
-    /devl/midi/run
+    cd midi
+    ./run
 fi
