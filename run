@@ -1,6 +1,6 @@
 # turn on knobs
 # knob-on {clk} {dt} {sw} {increment}
-/devl/midi/knob-on 17 18 4 6
+/devl/midi/knob-on 17 18 4 1
 /devl/midi/knob-on 22 23 27 3
 /devl/midi/knob-on 6 12 5 1
 
