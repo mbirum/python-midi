@@ -1,4 +1,4 @@
-dir=/devl/midi/channels
+dir=/home/pi/devl/midi/channels
 
 arg=$1
 if [ "$arg" = "reset" ]

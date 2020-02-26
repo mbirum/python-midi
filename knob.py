@@ -26,7 +26,7 @@ posLast = pos
 
 try:
 
-    led.power(GPIO.HIGH)
+    led.powerOn()
 
     increment = 0.0001
     counter = 0.0
@@ -78,6 +78,6 @@ try:
         sleep(increment)
 
 finally:
-    os.system('/devl/midi/midichan reset %s'%(channel))
+    os.system('/home/pi/devl/midi/midichan reset %s'%(channel))
     GPIO.cleanup()
     print "done"

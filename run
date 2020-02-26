@@ -1,8 +1,2 @@
-# turn on knobs
-# knob-on {clk} {dt} {sw} {increment}
-/devl/midi/knob-on 17 18 4 6
-/devl/midi/knob-on 22 23 27 3
-/devl/midi/knob-on 6 12 5 1
-
-# run update monitor on sw pins
-exec -a update-midi python /devl/midi/update.py 4 27 5 &
+serial=$(cat /proc/cpuinfo | grep Serial | awk '{print $3}')
+/home/pi/devl/midi/devices/$serial.run

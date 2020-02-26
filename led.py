@@ -6,14 +6,19 @@ def power(switch):
     GPIO.setup(ledPin, GPIO.OUT)
     GPIO.output(ledPin, switch)
 
+def powerOn():
+    power(GPIO.HIGH)
+
+def powerOff():
+    power(GPIO.LOW)
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     arg = sys.argv[1]
     if "on" == arg:
-        power(GPIO.HIGH)
+        powerOn()
     if "off" == arg:
-        power(GPIO.LOW)
+        powerOff()
     GPIO.cleanup()
 

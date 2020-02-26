@@ -1,6 +1,8 @@
 import Adafruit_MPR121.MPR121 as MPR121
+from time import sleep
 import sys
-import time
+import os
+import led
 
 channel = sys.argv[1])
 
@@ -26,6 +28,8 @@ pin_mapping = {
   2: '02',
   11: '11',
 }
+
+led.powerOn()
 
 last_touched = cap.touched()
 while True:

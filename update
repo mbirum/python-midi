@@ -1,12 +1,12 @@
 # try clone
-cd /devl
+cd /home/pi/devl
 git clone https://github.com/mbirum/python-midi
 
 # if cloned
 if [ -d "./python-midi" ]
 then
     # kill
-    /devl/midi/kill
+    /home/pi/devl/midi/kill
 
     # copy clone into /midi
     rm -rf midi
@@ -14,7 +14,7 @@ then
     rm -rf python-midi
 
     # re-run
-    /devl/midi/run
+    /home/pi/devl/midi/run
     cd -
     clear
 fi
