@@ -44,4 +44,4 @@ while True:
 
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
-    time.sleep(0.01)
+    sleep(0.01)
