@@ -29,7 +29,7 @@ pin_mapping = {
   11: '11',
 }
 
-led.powerOn()
+#led.powerOn()
 
 last_touched = cap.touched()
 while True:
