@@ -2,9 +2,9 @@
 python /home/pi/devl/midi/led.py off
 
 # kill processes
-ps -ef | grep knob- | grep -v grep | awk '{print $2}' | xargs kill -9
-ps -ef | grep touch- | grep -v grep | awk '{print $2}' | xargs kill -9
-ps -ef | grep update-midi | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep knob- | grep -v grep | awk '{print $2}' | xargs -I@ kill -9 @ >/dev/null
+ps -ef | grep touch- | grep -v grep | awk '{print $2}' | xargs -I@ kill -9 @ >/dev/null
+ps -ef | grep update-midi | grep -v grep | awk '{print $2}' | xargs -I@ kill -9 @ >/dev/null
 
 # reset midi channels
 for f in /home/pi/devl/midi/channels/*; do echo 1 > $f; done
