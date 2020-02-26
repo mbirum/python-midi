@@ -5,8 +5,8 @@ git clone https://github.com/mbirum/python-midi
 # if cloned
 if [ -d "./python-midi" ]
 then
-    # kill
-    /home/pi/devl/midi/kill
+    # stop
+    /home/pi/devl/midi/stop
 
     # copy clone into /midi
     rm -rf midi
