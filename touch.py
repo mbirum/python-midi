@@ -4,7 +4,7 @@ import sys
 import os
 import led
 
-channel = sys.argv[1])
+channel = sys.argv[1]
 
 # Create MPR121 instance.
 cap = MPR121.MPR121()
