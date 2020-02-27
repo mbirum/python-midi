@@ -18,18 +18,18 @@ if not cap.begin():
     sys.exit(1)
     
 pin_mapping = {
-  5: '05',
-  10: '10',
-  1: '01',
-  3: '03',
-  4: '04',
-  0: '00',
-  6: '06',
-  7: '07',
-  8: '08',
-  9: '09',
-  2: '02',
-  11: '11',
+  5: '58',
+  10: '59',
+  1: '60',
+  3: '61',
+  4: '62',
+  0: '63',
+  6: '64',
+  7: '57',
+  8: '56',
+  9: '55',
+  2: '54',
+  11: '53',
 }
 
 #led.powerOn()
@@ -41,8 +41,9 @@ while True:
         pin_bit = 1 << i
         # First check if transitioned from not touched to touched.
         if current_touched & pin_bit and not last_touched & pin_bit:
-            code=hex(strength).split('x')[1]
-            message='9%s %s %s'%(channel,pin_mapping.get(i),code)
+            velocity=hex(strength).split('x')[1]
+            note=hex(pin_mapping.get(i)).split('x')[1]
+            message='9%s %s %s'%(channel,note,velocity)
             #print(message)
             os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
