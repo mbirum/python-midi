@@ -6,6 +6,9 @@ import led
 
 channel = sys.argv[1]
 
+strength = 115
+increment = 0.01
+
 # Create MPR121 instance.
 cap = MPR121.MPR121()
 
@@ -34,14 +37,13 @@ pin_mapping = {
 last_touched = cap.touched()
 while True:
     current_touched = cap.touched()
-    
     for i in range(12):
         pin_bit = 1 << i
         # First check if transitioned from not touched to touched.
         if current_touched & pin_bit and not last_touched & pin_bit:
-            code=hex(100).split('x')[1]
+            code=hex(strength).split('x')[1]
             print('9%s %s %s'%(channel,pin_mapping.get(i),code))
 
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
-    sleep(0.01)
+    sleep(increment)
