@@ -42,7 +42,9 @@ while True:
         # First check if transitioned from not touched to touched.
         if current_touched & pin_bit and not last_touched & pin_bit:
             code=hex(strength).split('x')[1]
-            print('9%s %s %s'%(channel,pin_mapping.get(i),code))
+            message='9%s %s %s'%(channel,pin_mapping.get(i),code)
+            #print(message)
+            os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
