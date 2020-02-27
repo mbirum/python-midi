@@ -40,7 +40,7 @@ while True:
         # First check if transitioned from not touched to touched.
         if current_touched & pin_bit and not last_touched & pin_bit:
             code=hex(100).split('x')[1]
-            print('9%s %s %s'%(channel,pin_mapping.get(pin_bit),code))
+            print('9%s %s %s'%(channel,pin_mapping.get(i),code))
 
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
