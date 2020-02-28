@@ -1,2 +1,3 @@
-serial=$(cat /proc/cpuinfo | grep Serial | awk '{print $3}')
-/home/pi/devl/midi/devices/$serial.run
+device=$(cat /proc/cpuinfo | grep Serial | awk '{print $3}')
+/home/pi/devl/midi/devices/$device/run
+/home/pi/devl/midi/devices/$device/update

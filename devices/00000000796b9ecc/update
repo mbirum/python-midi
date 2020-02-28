@@ -1,0 +1,4 @@
+dir=$(dirname "$0")
+
+# run update monitor on sw pins
+exec -a update-midi python $dir/update.py 4 27 5 &
