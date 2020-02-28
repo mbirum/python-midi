@@ -7,7 +7,7 @@ import touchmap
 
 channel = sys.argv[1]
 
-strength = 120
+strength = 115
 increment = 0.01
 updatePin = 10
 
