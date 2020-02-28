@@ -4,3 +4,6 @@
 /home/pi/devl/midi/knob-on 17 18 4 6
 /home/pi/devl/midi/knob-on 22 23 27 3
 /home/pi/devl/midi/knob-on 6 12 5 1
+
+# run update monitor on sw pins
+exec -a update-midi python ./update.py 4 27 5 &
