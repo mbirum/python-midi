@@ -35,6 +35,7 @@ while True:
                 pinValue=touchmap.pinValue(i)
                 note=hex(int(pinValue)).split('x')[1]
                 message='9%s %s %s'%(channel,note,velocity)
+                print("i %s pinValue %s message %s"%(i, pinValue, message))
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
     last_touched = current_touched
