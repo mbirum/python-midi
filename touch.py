@@ -3,7 +3,7 @@ from time import sleep
 import sys
 import os
 import led
-import touch-mapping
+import touchmap
 
 channel = sys.argv[1]
 
@@ -32,7 +32,7 @@ while True:
                 os.system('/bin/bash -c /home/pi/devl/midi/update')
             else:
                 velocity=hex(strength).split('x')[1]
-                note=hex(int(touch_mapping.pinValue(i))).split('x')[1]
+                note=hex(int(touchmap.pinValue(i))).split('x')[1]
                 message='9%s %s %s'%(channel,note,velocity)
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
