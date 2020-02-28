@@ -32,8 +32,11 @@ while True:
                 os.system('/bin/bash -c /home/pi/devl/midi/update')
             else:
                 velocity=hex(strength).split('x')[1]
-                note=hex(int(touchmap.pinValue(i))).split('x')[1]
+                pinValue=touchmap.pinValue(i)
+                note=hex(int(pinValue)).split('x')[1]
                 message='9%s %s %s'%(channel,note,velocity)
+                print i
+                print pinValue
                 print message
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
