@@ -40,6 +40,7 @@ note_values = {
 def getNote(pin):
     n = open('/home/pi/devl/midi/touch-pins/%s/note'%(pin), 'r')
     note = n.read()
+    print note
     return note_values.get(note)
 
 def getVelocity(pin):
