@@ -1,18 +1,27 @@
 let data = new Array();
 for (let i = 0; i < 12; i++) {
     let note, noteSHA, velocity, velocitySHA = '';
-    let url = `https://api.github.com/repos/mbirum/python-midi/contents/touch-pins/${i}/note`;
-    $.get(url, function(response) {
-        note = atob(response.content);
-        noteSHA = response.sha;
-        $(`#${i}note`).val(note);
-        url = `https://api.github.com/repos/mbirum/python-midi/contents/touch-pins/${i}/velocity`;
-        $.get(url, function(response) {
-            velocity = atob(response.content);
-            velocitySHA = response.sha;
-            $(`#${i}vel`).val(velocity);
-            data.push({note: {sha: noteSHA, value: note}, velocity: {sha: velocitySHA, value: velocity}});
-        });
+    $.ajax({
+        url: `https://api.github.com/repos/mbirum/python-midi/contents/touch-pins/${i}/note`,
+        type: 'GET',
+        headers: {Authorization: `token ${token.value}`},
+        success: function(response) {
+            note = atob(response.content);
+            noteSHA = response.sha;
+            $(`#${i}note`).val(note);
+
+            $.ajax({
+                url: `https://api.github.com/repos/mbirum/python-midi/contents/touch-pins/${i}/velocity`,
+                type: 'GET',
+                headers: {Authorization: `token ${token.value}`},
+                success: function(response) {
+                    velocity = atob(response.content);
+                    velocitySHA = response.sha;
+                    $(`#${i}vel`).val(velocity);
+                    data.push({note: {sha: noteSHA, value: note}, velocity: {sha: velocitySHA, value: velocity}});
+                }
+            });
+        }
     });
 }
 
@@ -21,9 +30,7 @@ function updateContent(i, type, callback) {
     $.ajax({
         url: url, 
         type: 'PUT',
-        headers: {
-            Authorization: "token a4cc84266549210db944b975a320034977ed9753"
-        },
+        headers: {Authorization: `token ${token.value}`},
         contentType: "application/json",
         data: JSON.stringify({
             message: `app update ${i} ${type}`,
@@ -40,19 +47,23 @@ function updateContent(i, type, callback) {
 
 $("button").click(function(e) {
     let i = this.id.replace("sync", "");
-    updateContent(i, 'note', function() {
-        updateContent(i, 'velocity');
-    });
+    if (data[i].note.value != $(`#${i}note`).val()) {
+        data[i].note.value = $(`#${i}note`).val();
+        updateContent(i, 'note', function(response) {
+            data[i].note.sha = response.content.sha;
+        });
+    }
+    if (data[i].velocity.value != $(`#${i}vel`).val()) {
+        data[i].velocity.value = $(`#${i}vel`).val();
+        updateContent(i, 'velocity', function(response) {
+            data[i].velocity.sha = response.content.sha;
+        });
+    }
+    
     $(this).hide();
 });
 
 $("input").change(function(e) {
     let i = this.id.replace("note", "").replace("vel", "");
-    if ($(this).hasClass('note')) {
-        data[i].note.value = $(this).val();
-    }
-    else {
-        data[i].velocity.value = $(this).val();
-    }
     $(`#${i}sync`).show();
 });

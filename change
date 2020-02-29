@@ -1,0 +1,20 @@
+for arg in "$@"
+do
+    if [ "$1" != "$arg" ]
+    then
+        note=$(echo $arg | grep 'n')
+        if [ "" == "$note" ]
+        then
+            # velocity
+            velocity=$(echo $arg | grep 'v')
+            text=$arg
+            empty=""
+            echo "${text/v/$empty}" > ./touch-pins/$1/velocity
+        else
+            # note
+            text=$(echo $arg | tr [a-z] [A-Z])
+            empty=""
+            echo "${text/N/$empty}" > ./touch-pins/$1/note
+        fi
+    fi
+done
