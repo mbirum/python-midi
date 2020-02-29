@@ -1,19 +1,3 @@
-
-pin_notes = {
-    0: 'F#2',
-    1: 'F#2',
-    2: 'G2',
-    3: 'B1',
-    4: 'E#1',
-    5: 'A#2',
-    6: 'A2',
-    7: 'B2',
-    8: 'C#',
-    9: 'G1',
-    10: 'G#1',
-    11: 'A#2'
-}
-
 note_values = {
     'C': 24,
     'C#': 25,
@@ -53,6 +37,12 @@ note_values = {
     'B2': 59
 }
 
-def pinValue(pin):
-    note = pin_notes.get(pin)
+def getNote(pin):
+    n = open('/home/pi/devl/midi/touch-pins/%s/note'%(pin), 'r')
+    note = n.read()
     return note_values.get(note)
+
+def getVelocity(pin):
+    v = open('/home/pi/devl/midi/touch-pins/%s/velocity'%(pin), 'r')
+    velocity = v.read()
+    return velocity

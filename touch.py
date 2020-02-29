@@ -7,7 +7,6 @@ import touchmap
 
 channel = sys.argv[1]
 
-strength = 115
 increment = 0.01
 updatePin = 10
 
@@ -31,11 +30,11 @@ while True:
             if (updatePin == i):
                 os.system('/bin/bash -c /home/pi/devl/midi/update')
             else:
-                velocity=hex(strength).split('x')[1]
-                pinValue=touchmap.pinValue(i)
-                note=hex(int(pinValue)).split('x')[1]
-                message='9%s %s %s'%(channel,note,velocity)
-                print("i %s pinValue %s message %s"%(i, pinValue, message))
+                v = touchmap.getVelocity(i)
+                velocity = hex(v).split('x')[1]
+                n = touchmap.getNote(i)
+                note = hex(int(n)).split('x')[1]
+                message = '9%s %s %s'%(channel,note,velocity)
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
     last_touched = current_touched
