@@ -36,6 +36,12 @@ while True:
                 note = hex(int(n)).split('x')[1]
                 message = '9%s %s %s'%(channel,note,velocity)
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
+        
+        if not current_touched & pin_bit and last_touched & pin_bit:
+            n = touchmap.getNote(i)
+            note = hex(int(n)).split('x')[1]
+            message = '8%s %s 7f'%(channel,note)
+            os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
     last_touched = current_touched
     sleep(increment)
