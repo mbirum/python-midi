@@ -1,7 +1,6 @@
 # try clone
 cd /home/pi/devl
-#git clone https://github.com/mbirum/python-midi
-git clone --single-branch --branch re-organization https://github.com/mbirum/python-midi
+git clone https://github.com/mbirum/python-midi
 
 # if cloned
 if [ -d "./python-midi" ]
