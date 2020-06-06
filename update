@@ -1,20 +1,37 @@
 # try clone
 cd /home/pi/devl
-git clone https://github.com/mbirum/python-midi
+#git clone https://github.com/mbirum/python-midi
+git clone --single-branch --branch re-organization https://github.com/mbirum/python-midi
 
 # if cloned
 if [ -d "./python-midi" ]
 then
-    # stop
-    /home/pi/devl/midi/stop
+    cd python-midi
 
-    # copy clone into /midi
+    # get device specific dir
+    device=$(cat /proc/cpuinfo | grep Serial | awk '{print $3}')
+    dir=$(grep -r $device . | sed "s/device:$device//g")
+
+    cd ..
+
     rm -rf midi
-    cp -r python-midi ./midi
+    mkdir midi && mkdir midi/channels && chmod -R 755 ./midi
+    
+    # copy channels into /midi
+    cp -R python-midi/channels ./midi
+
+    # copy shared into /midi
+    cp python-midi/* ./midi
+
+    # copy device dir into /midi
+    cp -r python-midi/$dir/* ./midi
+
     rm -rf python-midi
 
     # re-run
+    chmod -R 755 ./midi
+    /home/pi/devl/midi/stop
     /home/pi/devl/midi/run
-    cd -
+    cd /home/pi/devl/midi
     clear
 fi

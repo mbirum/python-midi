@@ -1,0 +1,6 @@
+# led off
+python /home/pi/devl/midi/led.py off
+
+# kill processes
+ps -ef | grep knob- | grep -v grep | awk '{print $2}' | xargs -I@ kill -9 @ >/dev/null
+ps -ef | grep update-midi | grep -v grep | awk '{print $2}' | xargs -I@ kill -9 @ >/dev/null

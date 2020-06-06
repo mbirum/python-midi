@@ -2,7 +2,6 @@ import Adafruit_MPR121.MPR121 as MPR121
 from time import sleep
 import sys
 import os
-import led
 import touchmap
 
 channel = sys.argv[1]
@@ -14,8 +13,6 @@ cap = MPR121.MPR121()
 if not cap.begin():
     print('Error initializing MPR121')
     sys.exit(1)
-    
-#led.powerOn()
 
 last_touched = cap.touched()
 while True:
