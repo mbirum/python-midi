@@ -7,7 +7,7 @@ import touchmap
 channel = sys.argv[1]
 
 increment = 0.01
-updatePin = 10
+updatePin = 11
 
 cap = MPR121.MPR121()
 if not cap.begin():
