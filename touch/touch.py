@@ -31,7 +31,8 @@ while True:
                 velocity = hex(int(v)).split('x')[1]
                 n = touchmap.getNote(i)
                 note = hex(int(n)).split('x')[1]
-                message = '9%s %s %s'%(channel,note,velocity)
+                #message = '9%s %s %s'%(channel,note,velocity)
+                message='9%s 0%s 7f'%(channel,i)
                 os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
         
         if not current_touched & pin_bit and last_touched & pin_bit:
