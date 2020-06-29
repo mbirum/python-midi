@@ -1,2 +1,1 @@
-channel=$(/home/pi/devl/midi/midichan)
-exec -a touch-c$channel python /home/pi/devl/midi/touch.py $channel &
+exec -a touch-c$channel python /home/pi/devl/midi/touch.py F &
