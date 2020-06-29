@@ -4,11 +4,11 @@ import sys
 import os
 import led
 
-clkPin = int(sys.argv[1])
-dtPin = int(sys.argv[2])
-swPin = int(sys.argv[3])
-knobIncrement = int(sys.argv[4])
-channel = sys.argv[5]
+channel = sys.argv[1]
+clkPin = int(sys.argv[2])
+dtPin = int(sys.argv[3])
+swPin = int(sys.argv[4])
+knobIncrement = int(sys.argv[5])
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -78,6 +78,6 @@ try:
         sleep(increment)
 
 finally:
-    os.system('/home/pi/devl/midi/midichan reset %s'%(channel))
+    #os.system('/home/pi/devl/midi/midichan reset %s'%(channel))
     GPIO.cleanup()
     print "done"
