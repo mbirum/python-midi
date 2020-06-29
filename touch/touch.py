@@ -24,24 +24,15 @@ while True:
 
         # If transitioning to touched from not touched
         if current_touched & pin_bit and not last_touched & pin_bit:
-            if (updatePin == i):
-                os.system('/bin/bash -c /home/pi/devl/midi/update')
-            else:
-                v = touchmap.getVelocity(i)
-                velocity = hex(int(v)).split('x')[1]
-                n = touchmap.getNote(i)
-                note = hex(int(n)).split('x')[1]
-                touchnote = hex(int(i)).split('x')[1]
-                #message = '9%s %s %s'%(channel,note,velocity)
-                message='9%s %s 7f'%(channel,touchnote)
-                os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
+            n = touchmap.getNote(i)
+            note = hex(int(n)).split('x')[1]
+            message='9%s %s 7f'%(channel,note)
+            os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
         
         if not current_touched & pin_bit and last_touched & pin_bit:
             n = touchmap.getNote(i)
             note = hex(int(n)).split('x')[1]
-            touchnote = hex(int(i)).split('x')[1]
-            #message = '8%s %s 7f'%(channel,note)
-            message = '8%s %s 7f'%(channel,touchnote)
+            message = '8%s %s 7f'%(channel,note)
             os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
     last_touched = current_touched
