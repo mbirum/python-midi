@@ -1,6 +1,6 @@
 # knob-on $1{channel} $2{clk} $3{dt} $4{sw} $5{increment}
-/home/pi/devl/midi/knob-on 0 17 18 4 1
-/home/pi/devl/midi/knob-on 1 22 23 27 1
+/home/pi/devl/midi/knob-on 0 17 18 4 6
+/home/pi/devl/midi/knob-on 1 22 23 27 3
 /home/pi/devl/midi/knob-on 2 6 12 5 1
 
 # run update monitor on sw pins
