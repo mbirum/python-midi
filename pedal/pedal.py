@@ -1,4 +1,3 @@
-import os
 import time
 import busio
 import digitalio
@@ -53,7 +52,7 @@ while True:
 
     if trim_pot_changed:
         # convert 16bit adc0 (0-65535) trim pot read into 0-127 midi control level
-        pedalValue = remap_range(trim_pot, 0, 60032, 0, 127)
+        pedalValue = remap_range(trim_pot, 100, 60032, 0, 127)
         
         print(trim_pot)
 
