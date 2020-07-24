@@ -52,7 +52,11 @@ while True:
         # convert 16bit adc0 (0-65535) trim pot read into 0-127 midi control level
         pedalValue = remap_range(trim_pot, 0, 65535, 0, 127)
         
-        print(pedalValue)
+        #print(pedalValue)
+        code=hex(pedalValue).split('x')[1]
+        message='B%s 02 %s'%(channel,code)
+        print(message)
+        #os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
         last_read = trim_pot
 
