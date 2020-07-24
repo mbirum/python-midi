@@ -55,7 +55,7 @@ while True:
         # convert 16bit adc0 (0-65535) trim pot read into 0-127 midi control level
         pedalValue = remap_range(trim_pot, 0, 60032, 0, 127)
         
-        print(pedalValue)
+        print(trim_pot)
 
         # save the potentiometer reading for the next loop
         last_read = trim_pot
