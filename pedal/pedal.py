@@ -53,13 +53,15 @@ while True:
 
     if trim_pot_changed:
         # convert 16bit adc0 (0-65535) trim pot read into 0-100 volume level
-        set_volume = remap_range(trim_pot, 0, 65535, 0, 100)
-
+        pedalValue = remap_range(trim_pot, 0, 65535, 0, 100)
+        
+        print(pedalValue)
+        
         # set OS volume playback volume
-        print('Volume = {volume}%' .format(volume = set_volume))
-        set_vol_cmd = 'sudo amixer cset numid=1 -- {volume}% > /dev/null' \
-        .format(volume = set_volume)
-        os.system(set_vol_cmd)
+        #print('Volume = {volume}%' .format(volume = set_volume))
+        #set_vol_cmd = 'sudo amixer cset numid=1 -- {volume}% > /dev/null' \
+        #.format(volume = set_volume)
+        #os.system(set_vol_cmd)
 
         # save the potentiometer reading for the next loop
         last_read = trim_pot
