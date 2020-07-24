@@ -27,7 +27,6 @@ tolerance = 2      # to keep from being jittery we'll only change
                     # on a 16-bit ADC
 
 def remap_range(value, left_min, left_max, right_min, right_max):
-    print('value=%s'%(value))
     # this remaps a value from original (left) range to new (right) range
     # Figure out how 'wide' each range is
     left_span = left_max - left_min
@@ -35,9 +34,6 @@ def remap_range(value, left_min, left_max, right_min, right_max):
 
     # Convert the left range into a 0-1 range (int)
     valueScaled = int(value - left_min) / int(left_span)
-    print('valueScaled=%s'%(valueScaled))
-    
-    print('mappedValue=%s'%(valueScaled * right_span))
     
     # Convert the 0-1 range into a value in the right range.
     return int(right_min + (valueScaled * right_span))
@@ -57,14 +53,13 @@ while True:
 
     if trim_pot_changed:
         # convert 16bit adc0 (0-65535) trim pot read into 0-127 midi control level
-        pedalValue = remap_range(trim_pot, 0, 65535, 0, 127)
+        pedalValue = remap_range(trim_pot, 0, 60032, 0, 127)
         
-        #print(pedalValue)
+        print(pedalValue)
 
         # save the potentiometer reading for the next loop
         last_read = trim_pot
 
     # hang out and do nothing for a half second
-    #time.sleep(0.0001)
-    time.sleep(1)
+    time.sleep(0.0001)
 
