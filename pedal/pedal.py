@@ -20,25 +20,18 @@ chan0 = AnalogIn(mcp, MCP.P0)
 print('Raw ADC Value: ', chan0.value)
 print('ADC Voltage: ' + str(chan0.voltage) + 'V')
 
-last_read = 0       # this keeps track of the last potentiometer value
-tolerance = 250     # to keep from being jittery we'll only change
-                    # volume when the pot has moved a significant amount
-                    # on a 16-bit ADC
+last_read = 0
+tolerance = 250
 
 def remap_range(value, left_min, left_max, right_min, right_max):
-    # this remaps a value from original (left) range to new (right) range
-    # Figure out how 'wide' each range is
     left_span = left_max - left_min
     right_span = right_max - right_min
 
-    # Convert the left range into a 0-1 range (int)
     valueScaled = int(value - left_min) / int(left_span)
     
-    # Convert the 0-1 range into a value in the right range.
     return int(right_min + (valueScaled * right_span))
 
 while True:
-    # we'll assume that the pot didn't move
     trim_pot_changed = False
 
     # read the analog pin
@@ -54,9 +47,8 @@ while True:
         # convert 16bit adc0 (0-65535) trim pot read into 0-127 midi control level
         pedalValue = remap_range(trim_pot, 0, 65535, 0, 127)
         
-        print(trim_pot)
+        print(pedalValue)
 
-        # save the potentiometer reading for the next loop
         last_read = trim_pot
 
     # hang out and do nothing for a half second
