@@ -1,1 +1,1 @@
-exec -a pedal-c$channel python /home/pi/devl/midi/pedal.py E &
+exec -a pedal-c$channel python3 /home/pi/devl/midi/pedal.py E &
