@@ -1,9 +1,14 @@
 import time
+import sys
+import os
 import busio
 import digitalio
 import board
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
+
+channel = sys.argv[1]
+print('channel is %s'%(channel))
 
 # create the spi bus
 spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
