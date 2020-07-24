@@ -22,7 +22,7 @@ print('Raw ADC Value: ', chan0.value)
 print('ADC Voltage: ' + str(chan0.voltage) + 'V')
 
 last_read = 0       # this keeps track of the last potentiometer value
-tolerance = 250     # to keep from being jittery we'll only change
+tolerance = 350     # to keep from being jittery we'll only change
                     # volume when the pot has moved a significant amount
                     # on a 16-bit ADC
 
@@ -61,5 +61,5 @@ while True:
         last_read = trim_pot
 
     # hang out and do nothing for a half second
-    time.sleep(0.001)
+    time.sleep(0.0001)
 
