@@ -43,17 +43,19 @@ def remap_range(value, left_min, left_max, right_min, right_max):
 
 while True:
 
-    if GPIO.input(12) == GPIO.HIGH and not left_pressed:
-      left_pressed = True
-      print("Left pressed")
+    if GPIO.input(12) == GPIO.HIGH:
+        if not left_pressed:
+            left_pressed = True
+            print("Left pressed")
     else:
-      left_pressed = False
+        left_pressed = False
         
-    if GPIO.input(18) == GPIO.HIGH and not right_pressed:
-      right_pressed = True
-      print("Right Pressed")
+    if GPIO.input(18) == GPIO.HIGH:
+        if not right_pressed:
+            right_pressed = True
+            print("Right Pressed")
     else:
-      right_pressed = False
+        right_pressed = False
     
     trim_pot_changed = False
 
