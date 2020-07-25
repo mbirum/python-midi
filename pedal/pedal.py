@@ -55,7 +55,7 @@ while True:
         code=hex(pedalValue).split('x')[1]
         message='B%s 02 %s'%(channel,code)
         #print(message)
-        os.system('amidi --port="hw:2,0,0" -S \'%s\''%(message))
+        os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
 
         last_read = trim_pot
 
