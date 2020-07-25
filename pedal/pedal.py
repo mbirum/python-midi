@@ -30,8 +30,8 @@ chan0 = AnalogIn(mcp, MCP.P0)
 
 last_read = 0
 tolerance = 250
-left_pressed = 0
-right_pressed = 0
+left_pressed = False
+right_pressed = False
 
 def remap_range(value, left_min, left_max, right_min, right_max):
     left_span = left_max - left_min
@@ -42,18 +42,18 @@ def remap_range(value, left_min, left_max, right_min, right_max):
     return int(right_min + (valueScaled * right_span))
 
 while True:
-    
-    if GPIO.input(12) == GPIO.HIGH and left_pressed==0:
-        left_pressed = 1
-        print("Left pressed")
+
+    if GPIO.input(12) == GPIO.HIGH and not left_pressed:
+      left_pressed = True
+      print("Left pressed")
     else:
-        left_pressed = 0
+      left_pressed = False
         
-    if GPIO.input(18) == GPIO.HIGH and right_pressed==0:
-        right_pressed = 1
-        print("Right Pressed")
+    if GPIO.input(18) == GPIO.HIGH and not right_pressed:
+      right_pressed = True
+      print("Right Pressed")
     else:
-        right_pressed = 0
+      right_pressed = False
     
     trim_pot_changed = False
 
