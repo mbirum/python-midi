@@ -46,14 +46,20 @@ while True:
     if GPIO.input(12) == GPIO.HIGH:
         if not left_pressed:
             left_pressed = True
-            print("Left pressed")
+            code=hex(127).split('x')[1]
+            message='B%s 03 %s'%(channel,code)
+            #print(message)
+            os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
     else:
         left_pressed = False
         
     if GPIO.input(18) == GPIO.HIGH:
         if not right_pressed:
             right_pressed = True
-            print("Right Pressed")
+            code=hex(127).split('x')[1]
+            message='B%s 04 %s'%(channel,code)
+            #print(message)
+            os.system('amidi --port="hw:1,0,0" -S \'%s\''%(message))
     else:
         right_pressed = False
     
