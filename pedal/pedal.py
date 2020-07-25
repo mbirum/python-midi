@@ -4,8 +4,15 @@ import os
 import busio
 import digitalio
 import board
+import RPi.GPIO as GPIO
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
+
+# set up pins for push buttons
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 channel = sys.argv[1]
 print('channel is %s'%(channel))
@@ -22,9 +29,6 @@ mcp = MCP.MCP3008(spi, cs)
 # create an analog input channel on pin 0
 chan0 = AnalogIn(mcp, MCP.P0)
 
-print('Raw ADC Value: ', chan0.value)
-print('ADC Voltage: ' + str(chan0.voltage) + 'V')
-
 last_read = 0
 tolerance = 250
 
@@ -37,6 +41,13 @@ def remap_range(value, left_min, left_max, right_min, right_max):
     return int(right_min + (valueScaled * right_span))
 
 while True:
+    
+    if GPIO.input(12) == GPIO.HIGH:
+        print("Left Pushed")
+        
+    if GPIO.input(18) == GPIO.HIGH:
+        print("Right Pushed")
+    
     trim_pot_changed = False
 
     # read the analog pin
@@ -59,6 +70,5 @@ while True:
 
         last_read = trim_pot
 
-    # hang out and do nothing for a half second
     time.sleep(0.0001)
 
