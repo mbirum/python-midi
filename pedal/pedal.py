@@ -43,13 +43,13 @@ def remap_range(value, left_min, left_max, right_min, right_max):
 
 while True:
     
-    if GPIO.input(12) == GPIO.HIGH and left_pressed != True:
+    if GPIO.input(12) == GPIO.HIGH and left_pressed is False:
         left_pressed = True
         print("Left pressed")
     else:
         left_pressed = False
         
-    if GPIO.input(18) == GPIO.HIGH and right_pressed != True:
+    if GPIO.input(18) == GPIO.HIGH and right_pressed is False:
         right_pressed = True
         print("Right Pushed")
     else:
