@@ -30,7 +30,7 @@ then
     # re-run
     chmod -R 755 ./midi
     /home/pi/devl/midi/stop
-    /home/pi/devl/midi/run
+    #/home/pi/devl/midi/run
     cd /home/pi/devl/midi
     clear
 fi
